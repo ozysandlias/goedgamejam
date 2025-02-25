@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://nrt658sbimc7"]
+
+[ext_resource type="PackedScene" uid="uid://cdediqy0ln8b8" path="res://scenes/floor.tscn" id="1_78fd2"]
+[ext_resource type="PackedScene" uid="uid://cbfgt1u4yqp4f" path="res://scenes/player.tscn" id="2_bchhq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q5uxs"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_fuxtm"]
+sky_material = SubResource("ProceduralSkyMaterial_q5uxs")
+
+[sub_resource type="Environment" id="Environment_gg3jg"]
+background_mode = 2
+sky = SubResource("Sky_fuxtm")
+tonemap_mode = 2
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gg3jg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Map" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Floor" parent="Map" instance=ExtResource("1_78fd2")]
+
+[node name="Player" parent="." instance=ExtResource("2_bchhq")]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199677, 0)
+spring_length = 3.0
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.973327, 0.229421, 0, -0.229421, 0.973327, 0, 0, 0)
+v_offset = 1.0
