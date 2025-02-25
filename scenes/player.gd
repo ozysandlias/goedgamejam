@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		var look_direction = Vector2(velocity.z, velocity.x)
-		model.rotation.y = lerp(model.rotation.y, look_direction.angle(), .3)
+		model.rotation.y = lerp_angle(model.rotation.y, look_direction.angle(), .3)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
