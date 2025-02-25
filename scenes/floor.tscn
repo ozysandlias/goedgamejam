@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdediqy0ln8b8"]
 
-[ext_resource type="Texture2D" uid="uid://dwtltfhiy0or7" path="res://assets/icon.svg" id="1_dgiln"]
+[ext_resource type="Texture2D" uid="uid://b7pc2sm5hv8s4" path="res://assets/Grid/Dark/texture_04.png" id="1_vbgso"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m6be7"]
 
@@ -8,7 +8,7 @@
 size = Vector3(1000, 1, 1000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ob7oo"]
-albedo_texture = ExtResource("1_dgiln")
+albedo_texture = ExtResource("1_vbgso")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_fxn6y"]
