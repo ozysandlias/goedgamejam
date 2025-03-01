@@ -44,4 +44,14 @@ v_offset = 1.0
 [node name="Track" parent="." instance=ExtResource("3_v7mqn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5075)
 
-[connection signal="area_entered" from="Track" to="Player" method="_on_track_area_entered"]
+[node name="Track2" parent="." instance=ExtResource("3_v7mqn")]
+transform = Transform3D(0.806548, 0, -0.591169, 0, 1, 0, 0.591169, 0, 0.806548, 0, 0, -10.5289)
+
+[node name="Track3" parent="." instance=ExtResource("3_v7mqn")]
+transform = Transform3D(0.0655424, 0, -0.99785, 0, 1, 0, 0.99785, 0, 0.0655424, 6.29282, 0.0444479, -17.3211)
+
+[node name="Track4" parent="." instance=ExtResource("3_v7mqn")]
+transform = Transform3D(-0.999654, 0, -0.026299, 0, 1, 0, 0.026299, 0, -0.999654, 21.7078, 0.0444479, -18.0818)
+
+[node name="Track5" parent="." instance=ExtResource("3_v7mqn")]
+transform = Transform3D(-0.0966795, 0, 0.995316, 0, 1, 0, -0.995316, 0, -0.0966795, 21.6286, 0.044446, -1.69502)

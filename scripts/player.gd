@@ -11,11 +11,15 @@ const JUMP_VELOCITY = 4.5
 var mouse_sensitivity = .3
 
 func _ready() -> void:
-	var track_node = get_parent().get_node("Track")
-	track_node.connect("on_track", handle_on_track)
+	var track_nodes = get_tree().get_nodes_in_group("tracks")
+	for node in track_nodes:
+		node.connect("on_track", handle_on_track)
+	#var track_node = get_parent().get_node("Track")
+	#track_node.on_track.connect(handle_on_track)
 
-func handle_on_track():
-	print("i am on track")
+func handle_on_track(track_direction):
+	print(track_direction)
+	velocity = track_direction * SPEED
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -36,9 +40,9 @@ func _physics_process(delta: float) -> void:
 		velocity.z = direction.z * SPEED
 		var look_direction = Vector2(velocity.z, velocity.x)
 		model.rotation.y = lerp_angle(model.rotation.y, look_direction.angle(), .3)
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
+		#velocity.z = move_toward(velocity.z, 0, SPEED)
 
 
 

@@ -14,7 +14,7 @@ size = Vector3(1, 0.25, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hnr4i"]
 
-[node name="Area3D" type="Area3D"]
+[node name="Area3D" type="Area3D" groups=["tracks"]]
 script = ExtResource("1_1ls72")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
