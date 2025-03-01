@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnyr4syglcv4i"]
+
+[ext_resource type="Script" path="res://scripts/track.gd" id="1_1ls72"]
+[ext_resource type="Texture2D" uid="uid://drfewuydar1e8" path="res://assets/Grid/Orange/texture_12.png" id="1_crysb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_satne"]
+albedo_texture = ExtResource("1_crysb")
+uv1_triplanar = true
+uv2_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_sqnjx"]
+material = SubResource("StandardMaterial3D_satne")
+size = Vector3(1, 0.25, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hnr4i"]
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_1ls72")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+mesh = SubResource("BoxMesh_sqnjx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_hnr4i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

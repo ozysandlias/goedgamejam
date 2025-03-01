@@ -4,10 +4,18 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 @onready var model = $MeshInstance3D
+@export var material: Material
 
 # Camera Variables
 @onready var spring_arm = $SpringArm3D
 var mouse_sensitivity = .3
+
+func _ready() -> void:
+	var track_node = get_parent().get_node("Track")
+	track_node.connect("on_track", handle_on_track)
+
+func handle_on_track():
+	print("i am on track")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -42,8 +50,7 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		spring_arm.rotation_degrees.x -= event.relative.y * mouse_sensitivity
-		spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)	
+		spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)
 	
 		spring_arm.rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		spring_arm.rotation_degrees.y = wrapf(spring_arm.rotation_degrees.y, 0.0, 360.0)	
-
