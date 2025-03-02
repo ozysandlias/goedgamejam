@@ -27,6 +27,14 @@ func _input(event):
 		rotation_degrees.x = pitch
 		rotation_degrees.y = yaw
 
-func _physics_process(delta: float) -> void: 
-	if Input.is_action_just_pressed("jump"):
+	#pause
+	if event is InputEventKey and Input.is_action_just_pressed("pause"):
+		get_tree().paused = true
+
+	#spawn cart with jump -- need to change based on leveling system
+	if event is InputEventKey and Input.is_action_just_pressed("jump"):
 		train_controller.spawn_cart()
+
+#func _physics_process(delta: float) -> void: 
+	#if Input.is_action_just_pressed("jump"):
+		#train_controller.spawn_cart()
