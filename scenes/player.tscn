@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbfgt1u4yqp4f"]
+[gd_scene load_steps=5 format=3 uid="uid://cbfgt1u4yqp4f"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0vstp"]
-[ext_resource type="Material" uid="uid://ce1anqmcyltpx" path="res://assets/Materials/red_grid.tres" id="2_xacdn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcesx"]
 
@@ -13,7 +12,6 @@ material = SubResource("StandardMaterial3D_qcesx")
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_0vstp")
-material = ExtResource("2_xacdn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_rk33y")
