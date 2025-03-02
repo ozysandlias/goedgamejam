@@ -7,7 +7,7 @@ func _ready():
 	current_track = get_parent()
 
 func _physics_process(delta):
-	progress += 10 * delta
+	progress += 5 * delta
 
 	# If we aren't on the new track
 	if Globals.next_track != null and current_track != Globals.next_track:
