@@ -15,6 +15,14 @@ run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+Globals="*res://scripts/globals.gd"
+
+[dotnet]
+
+project/assembly_name="goedgamejam"
+
 [input]
 
 jump={
