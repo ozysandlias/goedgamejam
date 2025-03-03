@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://chexarr2kj8p8"]
+
+[ext_resource type="Texture2D" uid="uid://bcu3o2c3fys4k" path="res://assets/Grid/Orange/texture_09.png" id="1_i6jro"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56p20"]
+albedo_texture = ExtResource("1_i6jro")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_nrvlj"]
+material = SubResource("StandardMaterial3D_56p20")
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qvr7h"]
+size = Vector3(2, 2, 2)
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_nrvlj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qvr7h")

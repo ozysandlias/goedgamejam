@@ -5,7 +5,8 @@ var mouse_sensitivity: float = 0.1
 # Rotation angles
 var yaw: float = 0.0
 var pitch: float = 0.0
-@onready var train_controller = get_parent().get_node("MeshInstance3D")
+@onready var raycast: RayCast3D = $RayCast3D
+@onready var train_controller: MeshInstance3D = get_parent().get_node("MeshInstance3D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,7 +21,7 @@ func _input(event):
 		pitch -= event.relative.y * mouse_sensitivity
 		
 		# Clamp the pitch to prevent flipping
-		pitch = clamp(pitch, -89.0, 89.0)
+		pitch = clamp(pitch, -89, 45)
 		yaw = wrapf(yaw, 0, 360)
 
 		# Apply the rotation to the Node3D (the parent of the Camera3D)
@@ -35,6 +36,11 @@ func _input(event):
 	if event is InputEventKey and Input.is_action_just_pressed("jump"):
 		train_controller.spawn_cart()
 
-#func _physics_process(delta: float) -> void: 
-	#if Input.is_action_just_pressed("jump"):
-		#train_controller.spawn_cart()
+	if event is InputEventMouseButton and Input.is_action_just_pressed("shoot"):
+		raycast.force_raycast_update()
+		if raycast.is_colliding():
+			var target = raycast.get_collider()
+			print(target)
+			if target.is_in_group("enemies"):
+				target.queue_free()
+

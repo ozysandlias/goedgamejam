@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://nrt658sbimc7"]
+[gd_scene load_steps=10 format=3 uid="uid://nrt658sbimc7"]
 
 [ext_resource type="PackedScene" uid="uid://cdediqy0ln8b8" path="res://scenes/floor.tscn" id="1_78fd2"]
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="3_3ryep"]
 [ext_resource type="PackedScene" uid="uid://odggu3tludgh" path="res://scenes/Engine.tscn" id="4_iwpfl"]
+[ext_resource type="PackedScene" uid="uid://chexarr2kj8p8" path="res://scenes/enemy.tscn" id="4_rmjx2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_78k2m"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -56,31 +57,62 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.2
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Crosshair" type="Label" parent="UI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Crosshair" type="Label" parent="UI/CenterContainer"]
+layout_mode = 2
 text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pause Menu" type="Node2D" parent="UI"]
+[node name="Pause Menu" type="Node2D" parent="UI/CenterContainer"]
 process_mode = 2
 visible = false
 script = ExtResource("3_3ryep")
 
-[node name="Close Buton" type="Button" parent="UI/Pause Menu"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 548.0
-offset_top = 238.0
-offset_right = 598.0
-offset_bottom = 269.0
-grow_horizontal = 2
+[node name="Close Buton" type="Button" parent="UI/CenterContainer/Pause Menu"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -60.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2, 2)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Close
 "
 
-[connection signal="pressed" from="UI/Pause Menu/Close Buton" to="UI/Pause Menu" method="_on_close_buton_pressed"]
+[node name="Enemy" parent="." instance=ExtResource("4_rmjx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2397, 1, 9.06016)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_rmjx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4906, 1, 5.67986)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_rmjx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3275, 1, 12.4396)
+
+[node name="Enemy4" parent="." instance=ExtResource("4_rmjx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.58877, 1, 14.2495)
+
+[node name="Enemy5" parent="." instance=ExtResource("4_rmjx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.28514, 1, 6.15727)
+
+[connection signal="pressed" from="UI/CenterContainer/Pause Menu/Close Buton" to="UI/CenterContainer/Pause Menu" method="_on_close_buton_pressed"]
