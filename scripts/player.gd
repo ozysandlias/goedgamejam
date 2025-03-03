@@ -43,4 +43,6 @@ func _input(event):
 			print(target)
 			if target.is_in_group("enemies"):
 				target.queue_free()
-
+			elif target.is_in_group("switch"):
+				target.switch_route()
+				print(target.queued_track_index)

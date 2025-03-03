@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://nrt658sbimc7"]
+[gd_scene load_steps=14 format=3 uid="uid://nrt658sbimc7"]
 
 [ext_resource type="PackedScene" uid="uid://cdediqy0ln8b8" path="res://scenes/floor.tscn" id="1_78fd2"]
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="3_3ryep"]
 [ext_resource type="PackedScene" uid="uid://odggu3tludgh" path="res://scenes/Engine.tscn" id="4_iwpfl"]
-[ext_resource type="PackedScene" uid="uid://chexarr2kj8p8" path="res://scenes/enemy.tscn" id="4_rmjx2"]
+[ext_resource type="PackedScene" uid="uid://bf8ci7a8vxxql" path="res://scenes/enemy.tscn" id="4_rmjx2"]
+[ext_resource type="Script" path="res://scripts/junction_controller.gd" id="5_215rm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_78k2m"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,17 +21,30 @@ tonemap_mode = 2
 [sub_resource type="Curve3D" id="Curve3D_huso3"]
 bake_interval = 5.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
-}
-point_count = 6
-
-[sub_resource type="Curve3D" id="Curve3D_4sn4i"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 10),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_o46pl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gkq6o"]
+
+[sub_resource type="Curve3D" id="Curve3D_4sn4i"]
+bake_interval = 5.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 20, 0, 10, 0, 0, 0, 0, 0, 0, 20, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 10),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_wlalt"]
+bake_interval = 5.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 10, 0, 15, 20, 0, 10, 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, -15, 0, 0, 0, 0, 0, 0, 0, 0, -10, -20, 0, 10, 0, 0, 0, 0, 0, 10),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="Game" type="Node3D"]
 process_mode = 1
@@ -47,10 +61,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 curve = SubResource("Curve3D_huso3")
 
 [node name="Engine" parent="Path3D2" instance=ExtResource("4_iwpfl")]
-transform = Transform3D(-4.37113e-08, 0, -0.999998, 0, 1, 0, 0.999998, 0, -4.37113e-08, 20, 0, 0)
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 0, 0, 10)
+
+[node name="Switch" type="StaticBody3D" parent="Path3D2" node_paths=PackedStringArray("tracks") groups=["switch"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4297, 0, 9.00501)
+script = ExtResource("5_215rm")
+tracks = [NodePath("../../Path3D3"), NodePath("../../Path3D")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D2/Switch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
+mesh = SubResource("CapsuleMesh_o46pl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D2/Switch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
+shape = SubResource("CapsuleShape3D_gkq6o")
 
 [node name="Path3D3" type="Path3D" parent="."]
 curve = SubResource("Curve3D_4sn4i")
+
+[node name="Switch" type="StaticBody3D" parent="Path3D3" node_paths=PackedStringArray("tracks") groups=["switch"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4297, 0, 9.00501)
+script = ExtResource("5_215rm")
+tracks = [NodePath("../../Path3D2")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D3/Switch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
+mesh = SubResource("CapsuleMesh_o46pl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D3/Switch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
+shape = SubResource("CapsuleShape3D_gkq6o")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_wlalt")
+
+[node name="Switch" type="StaticBody3D" parent="Path3D" node_paths=PackedStringArray("tracks") groups=["switch"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4297, 0, 9.00501)
+script = ExtResource("5_215rm")
+tracks = [NodePath("../../Path3D2")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/Switch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
+mesh = SubResource("CapsuleMesh_o46pl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/Switch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
+shape = SubResource("CapsuleShape3D_gkq6o")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.26897, 0)
@@ -105,14 +161,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2397, 1, 9.06016)
 
 [node name="Enemy2" parent="." instance=ExtResource("4_rmjx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4906, 1, 5.67986)
+visible = false
 
 [node name="Enemy3" parent="." instance=ExtResource("4_rmjx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3275, 1, 12.4396)
+visible = false
 
 [node name="Enemy4" parent="." instance=ExtResource("4_rmjx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.58877, 1, 14.2495)
+visible = false
 
 [node name="Enemy5" parent="." instance=ExtResource("4_rmjx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.28514, 1, 6.15727)
+visible = false
 
 [connection signal="pressed" from="UI/CenterContainer/Pause Menu/Close Buton" to="UI/CenterContainer/Pause Menu" method="_on_close_buton_pressed"]

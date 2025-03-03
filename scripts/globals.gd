@@ -11,7 +11,7 @@ var train_engine: PathFollow3D = null
 var train_end: PathFollow3D = null
 
 # Specifies what track the train should change to next
-var next_track: Node3D = null
+var next_track: Path3D = null
 
 # Setter for next_track
 func set_next_track(track):
