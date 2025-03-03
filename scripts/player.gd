@@ -45,4 +45,6 @@ func _input(event):
 			if target.is_in_group("destructibles"):
 				#immediately delete enemy -- need to change to damage
 				target.queue_free()
-
+			elif target.is_in_group("switch"):
+				target.switch_route()
+				print(target.queued_track_index)
