@@ -36,11 +36,13 @@ func _input(event):
 	if event is InputEventKey and Input.is_action_just_pressed("jump"):
 		train_controller.spawn_cart()
 
+	#fire the main cannon
 	if event is InputEventMouseButton and Input.is_action_just_pressed("shoot"):
 		raycast.force_raycast_update()
 		if raycast.is_colliding():
 			var target = raycast.get_collider()
 			print(target)
-			if target.is_in_group("enemies"):
+			if target.is_in_group("destructibles"):
+				#immediately delete enemy -- need to change to damage
 				target.queue_free()
 
