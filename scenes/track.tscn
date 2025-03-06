@@ -1,28 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnyr4syglcv4i"]
+[gd_scene load_steps=2 format=3 uid="uid://bnyr4syglcv4i"]
 
-[ext_resource type="Script" path="res://scripts/track.gd" id="1_1ls72"]
-[ext_resource type="Texture2D" uid="uid://drfewuydar1e8" path="res://assets/Grid/Orange/texture_12.png" id="1_crysb"]
+[sub_resource type="Curve3D" id="Curve3D_w0bbp"]
+_data = {
+"points": PackedVector3Array(0.531667, 0.170301, 0.610446, -0.531667, -0.170301, -0.610446, -2.29234, 0.0763559, -1.07345, -2.85431, -3.05787, 5.27777, 2.85431, 3.05787, -5.27777, -7.19006, 1.19324, -16.6523, -10.4586, -0.160088, 0.015461, 10.4586, 0.160088, -0.015461, 20.6447, 8.81659, -28.2183, -7.2748, 1.40495, -2.55213, 7.2748, -1.40495, 2.55213, 21.8234, 2.58189, -10.345, -6.86454, 0.140356, -1.55896, 6.86454, -0.140356, 1.55896, 37.2324, 2.09851, -13.5307, 0.0540657, 2.80842, -5.1103, -0.0540657, -2.80842, 5.1103, 47.7977, 1.29614, 8.56042, 6.99434, -2.01326, -0.804274, -6.99434, 2.01326, 0.804274, 32.0209, -0.471277, 15.0177, 8.78706, -0.140678, -0.384099, -8.78706, 0.140678, 0.384099, 19.726, 8.23123, 6.03891, 5.13924, -2.83793, 0.477376, -5.13924, 2.83793, -0.477376, 9.02203, 0.385953, 5.47875, 0.531667, 0.170301, 0.610446, -0.531667, -0.170301, -0.610446, 1.6174, 1.87261, 3.815, 0.531667, 0.170301, 0.610446, -0.531667, -0.170301, -0.610446, -2.29234, 0.0763559, -1.07345),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_satne"]
-albedo_texture = ExtResource("1_crysb")
-uv1_triplanar = true
-uv2_triplanar = true
+[node name="Path3D" type="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19867, 0)
+curve = SubResource("Curve3D_w0bbp")
 
-[sub_resource type="BoxMesh" id="BoxMesh_sqnjx"]
-material = SubResource("StandardMaterial3D_satne")
-size = Vector3(1, 0.25, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hnr4i"]
-
-[node name="Area3D" type="Area3D" groups=["tracks"]]
-script = ExtResource("1_1ls72")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-mesh = SubResource("BoxMesh_sqnjx")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_hnr4i")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 0.2, 0.5, 0.2, 0.5, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false

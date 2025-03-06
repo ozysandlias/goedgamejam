@@ -1,10 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://nrt658sbimc7"]
+[gd_scene load_steps=12 format=3 uid="uid://nrt658sbimc7"]
 
 [ext_resource type="PackedScene" uid="uid://cdediqy0ln8b8" path="res://scenes/floor.tscn" id="1_78fd2"]
-[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="3_3ryep"]
-[ext_resource type="PackedScene" uid="uid://odggu3tludgh" path="res://scenes/Engine.tscn" id="4_iwpfl"]
-[ext_resource type="PackedScene" uid="uid://bf8ci7a8vxxql" path="res://scenes/enemy.tscn" id="4_rmjx2"]
-[ext_resource type="Script" path="res://scripts/junction_controller.gd" id="5_215rm"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_3ryep"]
+[ext_resource type="PackedScene" uid="uid://bnyr4syglcv4i" path="res://scenes/track.tscn" id="3_v7mqn"]
+[ext_resource type="PackedScene" uid="uid://chexarr2kj8p8" path="res://scenes/enemy.tscn" id="4_rmjx2"]
+[ext_resource type="PackedScene" uid="uid://b8kdcfw2mefk8" path="res://scenes/junction.tscn" id="6_rqqhb"]
+[ext_resource type="PackedScene" uid="uid://dykfxuov41h2l" path="res://scenes/NewEngine.tscn" id="7_mqby7"]
+
+[sub_resource type="Curve3D" id="Curve3D_2agn1"]
+_data = {
+"points": PackedVector3Array(6.22107, -6.40896, -1.7934, -6.22107, 6.40896, 1.7934, 19.7804, 10.8315, -27.3533, 2.43936, -0.354273, -2.97948, -2.43936, 0.354273, 2.97948, 6.70369, 13.8407, -20.9687, 3.16082, 2.69977, -7.19061, -3.16082, -2.69977, 7.19061, -6.00037, 13.0863, -0.115902, -6.44402, 5.16908, -4.75468, 6.44402, -5.16908, 4.75468, 1.08641, 3.59337, 20.8165, -2.85542, 2.96847, 0.571705, 2.85542, -2.96847, -0.571705, 14.6347, 2.75617, 17.0846, -2.97026, -3.73511, 8.1986, 2.97026, 3.73511, -8.1986, 29.2186, 7.00926, -0.0967484, 1.96384, -1.3385, 0.454737, -1.96384, 1.3385, -0.454737, 23.9072, 9.79383, -27.0744, 1.35604, -1.1352, -0.161263, -1.35604, 1.1352, 0.161263, 19.7577, 10.8809, -27.3639),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_lh58h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.13663, -0.00396824, 2.12973, -2.95641, -0.00876999, 4.31822, 2.95641, 0.00876999, -4.31822, 19.5335, -0.00365543, 0.592884, 2.82379, -0.00878906, 4.00347, -2.82379, 0.00878906, -4.00347, 18.649, 0.0155287, -8.48606, 5.10385, -4.88676, 2.13731, -5.10385, 4.88676, -2.13731, 1.30083, 4.85422, -18.721, -5.19483, -0.645926, 0.233864, 5.19483, 0.645926, -0.233864, 3.79333, 15.0528, -23.0278, 6.49735, 5.34834, -2.23898, -6.49735, -5.34834, 2.23898, 5.629, 4.5816, -16.0321, 5.04873, 0.000889778, -4.25865, -5.04873, -0.000889778, 4.25865, -10.7801, 0.0288801, -13.1197, 1.45062, 0.00457478, -6.49335, -1.45062, -0.00457478, 6.49335, -15.4786, 0.0115957, -4.62194, 0, 0, 0, 0, 0, 0, -4.13663, -0.00396824, 2.12973),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_78k2m"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,98 +33,43 @@ background_mode = 2
 sky = SubResource("Sky_fdmoc")
 tonemap_mode = 2
 
-[sub_resource type="Curve3D" id="Curve3D_huso3"]
-bake_interval = 5.0
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 10),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_o46pl"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gkq6o"]
-
-[sub_resource type="Curve3D" id="Curve3D_4sn4i"]
-bake_interval = 5.0
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 20, 0, 10, 0, 0, 0, 0, 0, 0, 20, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 10),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
-
-[sub_resource type="Curve3D" id="Curve3D_wlalt"]
-bake_interval = 5.0
-_data = {
-"points": PackedVector3Array(0, 0, 0, 10, 0, 15, 20, 0, 10, 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0, -15, 0, 0, 0, 0, 0, 0, 0, 0, -10, -20, 0, 10, 0, 0, 0, 0, 0, 10),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
-
 [node name="Game" type="Node3D"]
 process_mode = 1
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5ht53")
 
 [node name="Map" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Floor" parent="Map" instance=ExtResource("1_78fd2")]
 
-[node name="Path3D2" type="Path3D" parent="."]
-curve = SubResource("Curve3D_huso3")
+[node name="Loop0" parent="." instance=ExtResource("3_v7mqn")]
+transform = Transform3D(1, -0.000139626, 0, 0.000139626, 1, 0, 0, 0, 1, -0.201575, 3.00303, -0.0345802)
+top_level = true
 
-[node name="Engine" parent="Path3D2" instance=ExtResource("4_iwpfl")]
-transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 0, 0, 10)
+[node name="Crossover" type="PathFollow3D" parent="Loop0"]
+transform = Transform3D(0.0712803, 0.150871, 0.985976, -0.316405, 0.940862, -0.121093, -0.945941, -0.303337, 0.114801, 21.2396, 8.13191, 6.08578)
+progress = 151.385
 
-[node name="Switch" type="StaticBody3D" parent="Path3D2" node_paths=PackedStringArray("tracks") groups=["switch"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4297, 0, 9.00501)
-script = ExtResource("5_215rm")
-tracks = [NodePath("../../Path3D3"), NodePath("../../Path3D")]
+[node name="Engine" parent="Loop0" instance=ExtResource("7_mqby7")]
+transform = Transform3D(0.754089, -0.135208, 0.642704, 0, 0.978579, 0.205868, -0.656772, -0.155243, 0.737936, -2.29234, 0.0763559, -1.07345)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D2/Switch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
-mesh = SubResource("CapsuleMesh_o46pl")
+[node name="Junction0One" parent="." node_paths=PackedStringArray("track_1", "track_2") instance=ExtResource("6_rqqhb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0317, 11.0858, 6.33501)
+track_1 = NodePath("../Loop0")
+track_2 = NodePath("../Loop1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D2/Switch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
-shape = SubResource("CapsuleShape3D_gkq6o")
+[node name="Loop1" parent="." instance=ExtResource("3_v7mqn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0752, 0.459936, 33.4356)
+top_level = true
+curve = SubResource("Curve3D_2agn1")
 
-[node name="Path3D3" type="Path3D" parent="."]
-curve = SubResource("Curve3D_4sn4i")
+[node name="Crossover" type="PathFollow3D" parent="Loop1"]
+transform = Transform3D(-0.0875667, 0.286297, 0.95413, -0.0425598, 0.955858, -0.290722, -0.995245, -0.0660653, -0.071517, 20.4799, 10.4725, -27.4363)
+progress = 138.841
 
-[node name="Switch" type="StaticBody3D" parent="Path3D3" node_paths=PackedStringArray("tracks") groups=["switch"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4297, 0, 9.00501)
-script = ExtResource("5_215rm")
-tracks = [NodePath("../../Path3D2")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D3/Switch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
-mesh = SubResource("CapsuleMesh_o46pl")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D3/Switch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
-shape = SubResource("CapsuleShape3D_gkq6o")
-
-[node name="Path3D" type="Path3D" parent="."]
-curve = SubResource("Curve3D_wlalt")
-
-[node name="Switch" type="StaticBody3D" parent="Path3D" node_paths=PackedStringArray("tracks") groups=["switch"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4297, 0, 9.00501)
-script = ExtResource("5_215rm")
-tracks = [NodePath("../../Path3D2")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/Switch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
-mesh = SubResource("CapsuleMesh_o46pl")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/Switch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
-shape = SubResource("CapsuleShape3D_gkq6o")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.26897, 0)
+[node name="Loop2" parent="." instance=ExtResource("3_v7mqn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3746, 11.5799, -30.1918)
+top_level = true
+curve = SubResource("Curve3D_lh58h")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -156,23 +116,48 @@ size_flags_vertical = 3
 text = "Close
 "
 
-[node name="Enemy" parent="." instance=ExtResource("4_rmjx2")]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("4_rmjx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2397, 1, 9.06016)
 
-[node name="Enemy2" parent="." instance=ExtResource("4_rmjx2")]
+[node name="Enemy6" parent="Enemies" instance=ExtResource("4_rmjx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3919, 1, 7.46397)
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource("4_rmjx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3919, 8.85247, -0.347276)
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource("4_rmjx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.40879, 8.85247, -4.67855)
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource("4_rmjx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3377, 13.4068, -11.1766)
+
+[node name="Enemy10" parent="Enemies" instance=ExtResource("4_rmjx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2139, 6.46719, -3.06943)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("4_rmjx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4906, 1, 5.67986)
 visible = false
 
-[node name="Enemy3" parent="." instance=ExtResource("4_rmjx2")]
+[node name="Enemy3" parent="Enemies" instance=ExtResource("4_rmjx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3275, 1, 12.4396)
 visible = false
 
-[node name="Enemy4" parent="." instance=ExtResource("4_rmjx2")]
+[node name="Enemy4" parent="Enemies" instance=ExtResource("4_rmjx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.58877, 1, 14.2495)
 visible = false
 
-[node name="Enemy5" parent="." instance=ExtResource("4_rmjx2")]
+[node name="Enemy5" parent="Enemies" instance=ExtResource("4_rmjx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.28514, 1, 6.15727)
 visible = false
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_5ht53")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.26897, 0)
 
 [connection signal="pressed" from="UI/CenterContainer/Pause Menu/Close Buton" to="UI/CenterContainer/Pause Menu" method="_on_close_buton_pressed"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dykfxuov41h2l"]
+
+[ext_resource type="Script" path="res://scripts/new_track_follow.gd" id="1_5xrr5"]
+[ext_resource type="Script" path="res://scripts/train_controller.gd" id="1_nqyxy"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_aj2ux"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_waja0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kqquk"]
+
+[node name="PathFollow3D" type="PathFollow3D"]
+script = ExtResource("1_5xrr5")
+
+[node name="Area3D" type="Area3D" parent="." groups=["cart_collider"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0)
+mesh = SubResource("BoxMesh_waja0")
+script = ExtResource("1_nqyxy")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 2, 0)
+spring_length = 3.0
+margin = 0.2
+script = ExtResource("3_aj2ux")
+
+[node name="Camera3D" type="Camera3D" parent="Area3D/SpringArm3D"]
+
+[node name="RayCast3D" type="RayCast3D" parent="Area3D/SpringArm3D"]
+target_position = Vector3(0, 0, -50)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0)
+shape = SubResource("BoxShape3D_kqquk")
