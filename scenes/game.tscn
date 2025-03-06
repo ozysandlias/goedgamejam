@@ -16,7 +16,7 @@ point_count = 8
 
 [sub_resource type="Curve3D" id="Curve3D_lh58h"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.13663, -0.00396824, 2.12973, -2.95641, -0.00876999, 4.31822, 2.95641, 0.00876999, -4.31822, 19.5335, -0.00365543, 0.592884, 2.82379, -0.00878906, 4.00347, -2.82379, 0.00878906, -4.00347, 18.649, 0.0155287, -8.48606, 5.10385, -4.88676, 2.13731, -5.10385, 4.88676, -2.13731, 1.30083, 4.85422, -18.721, -5.19483, -0.645926, 0.233864, 5.19483, 0.645926, -0.233864, 3.79333, 15.0528, -23.0278, 6.49735, 5.34834, -2.23898, -6.49735, -5.34834, 2.23898, 5.629, 4.5816, -16.0321, 5.04873, 0.000889778, -4.25865, -5.04873, -0.000889778, 4.25865, -10.7801, 0.0288801, -13.1197, 1.45062, 0.00457478, -6.49335, -1.45062, -0.00457478, 6.49335, -15.4786, 0.0115957, -4.62194, 0, 0, 0, 0, 0, 0, -4.13663, -0.00396824, 2.12973),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.13663, -0.00396824, 2.12973, -2.95641, -0.00876999, 4.31822, 2.95641, 0.00876999, -4.31822, 19.5335, -0.00365543, 0.592884, 2.82379, -0.00878906, 4.00347, -2.82379, 0.00878906, -4.00347, 18.649, 0.0155287, -8.48606, 3.72974, -4.8877, -2.45707, -3.72974, 4.8877, 2.45707, 1.30083, 4.85422, -18.721, -3.94049, 0.0869312, -0.463295, 3.94049, -0.0869312, 0.463295, 1.55865, 14.6082, -12.9601, 4.52173, 5.34666, 0.976578, -4.52173, -5.34666, -0.976578, 3.26569, 4.57984, -17.2764, 5.04873, 0.000889778, -4.25865, -5.04873, -0.000889778, 4.25865, -10.7801, 0.0288801, -13.1197, 1.45062, 0.00457478, -6.49335, -1.45062, -0.00457478, 6.49335, -15.4786, 0.0115957, -4.62194, 0, 0, 0, 0, 0, 0, -4.13663, -0.00396824, 2.12973),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 9
@@ -45,31 +45,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 transform = Transform3D(1, -0.000139626, 0, 0.000139626, 1, 0, 0, 0, 1, -0.201575, 3.00303, -0.0345802)
 top_level = true
 
-[node name="Crossover" type="PathFollow3D" parent="Loop0"]
+[node name="Crossover0One" type="PathFollow3D" parent="Loop0"]
 transform = Transform3D(0.0712803, 0.150871, 0.985976, -0.316405, 0.940862, -0.121093, -0.945941, -0.303337, 0.114801, 21.2396, 8.13191, 6.08578)
 progress = 151.385
 
 [node name="Engine" parent="Loop0" instance=ExtResource("7_mqby7")]
 transform = Transform3D(0.754089, -0.135208, 0.642704, 0, 0.978579, 0.205868, -0.656772, -0.155243, 0.737936, -2.29234, 0.0763559, -1.07345)
 
-[node name="Junction0One" parent="." node_paths=PackedStringArray("track_1", "track_2") instance=ExtResource("6_rqqhb")]
+[node name="Crossover0Two" type="PathFollow3D" parent="Loop0"]
+transform = Transform3D(0.00868188, -0.0131172, -0.99987, -0.445075, 0.895353, -0.0156106, 0.895446, 0.445156, 0.00193519, 20.6327, 8.8164, -28.2183)
+progress = 49.4877
+
+[node name="Junction0One" parent="." node_paths=PackedStringArray("cross_1", "cross_2") instance=ExtResource("6_rqqhb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0317, 11.0858, 6.33501)
-track_1 = NodePath("../Loop0")
-track_2 = NodePath("../Loop1")
+cross_1 = NodePath("../Loop0/Crossover0One")
+cross_2 = NodePath("../Loop1/Crossover1Zero")
 
 [node name="Loop1" parent="." instance=ExtResource("3_v7mqn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0752, 0.459936, 33.4356)
 top_level = true
 curve = SubResource("Curve3D_2agn1")
 
-[node name="Crossover" type="PathFollow3D" parent="Loop1"]
-transform = Transform3D(-0.0875667, 0.286297, 0.95413, -0.0425598, 0.955858, -0.290722, -0.995245, -0.0660653, -0.071517, 20.4799, 10.4725, -27.4363)
+[node name="Crossover1Zero" type="PathFollow3D" parent="Loop1"]
+transform = Transform3D(-0.0875667, 0.286297, 0.95413, -0.0425597, 0.955858, -0.290722, -0.995245, -0.0660653, -0.071517, 20.4799, 10.4725, -27.4363)
 progress = 138.841
+
+[node name="Junction0Two" parent="." node_paths=PackedStringArray("cross_1", "cross_2") instance=ExtResource("6_rqqhb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6182, 11.7856, -27.614)
+cross_1 = NodePath("../Loop0/Crossover0Two")
+cross_2 = NodePath("../Loop2/Crossover2Zero")
 
 [node name="Loop2" parent="." instance=ExtResource("3_v7mqn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3746, 11.5799, -30.1918)
 top_level = true
 curve = SubResource("Curve3D_lh58h")
+
+[node name="Crossover2Zero" type="PathFollow3D" parent="Loop2"]
+transform = Transform3D(-0.508115, -0.0587897, -0.859261, -0.116903, 0.993113, 0.00117911, 0.853304, 0.101049, -0.511501, -4.13663, -0.00396824, 2.12973)
+progress = 129.59
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -125,13 +138,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2397, 1, 9.06016)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3919, 1, 7.46397)
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3919, 8.85247, -0.347276)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0215, 11.179, 17.4207)
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.40879, 8.85247, -4.67855)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8317, 13.2545, -33.6757)
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3377, 13.4068, -11.1766)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6154, 20.4073, -48.8628)
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource("4_rmjx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2139, 6.46719, -3.06943)
