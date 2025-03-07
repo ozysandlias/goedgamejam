@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d4djpomlmxy4b"
+path="res://.godot/imported/Traindraft.obj-aa329c1b0eaaf69cb58bee0622824559.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Traindraft.obj-aa329c1b0eaaf69cb58bee0622824559.mesh"]
+
+source_file="res://assets/meshes/Traindraft.obj"
+dest_files=["res://.godot/imported/Traindraft.obj-aa329c1b0eaaf69cb58bee0622824559.mesh", "res://.godot/imported/Traindraft.obj-aa329c1b0eaaf69cb58bee0622824559.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

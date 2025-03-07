@@ -1,27 +1,98 @@
-[gd_scene load_steps=7 format=3 uid="uid://chexarr2kj8p8"]
+[gd_scene load_steps=11 format=3 uid="uid://chexarr2kj8p8"]
 
-[ext_resource type="Texture2D" uid="uid://bcu3o2c3fys4k" path="res://assets/Grid/Orange/texture_09.png" id="1_i6jro"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_uev7x"]
 [ext_resource type="Material" uid="uid://ce1anqmcyltpx" path="res://assets/Materials/red_grid.tres" id="2_w3d51"]
+[ext_resource type="Material" uid="uid://t6qde7qy4adh" path="res://assets/Materials/red.tres" id="3_tgt18"]
+[ext_resource type="ArrayMesh" uid="uid://bt8yufkdan2r4" path="res://assets/meshes/GolemLowPoly.obj" id="4_chios"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56p20"]
-albedo_texture = ExtResource("1_i6jro")
-uv1_triplanar = true
+[sub_resource type="SphereShape3D" id="SphereShape3D_qhhr3"]
+radius = 15.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_nrvlj"]
-material = SubResource("StandardMaterial3D_56p20")
-size = Vector3(2, 2, 2)
+[sub_resource type="SphereShape3D" id="SphereShape3D_yfpf0"]
+radius = 1.49602
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qvr7h"]
-size = Vector3(2, 2, 2)
+[sub_resource type="Animation" id="Animation_tvawd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RemoteTransform3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_beiug"]
+resource_name = "float"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RemoteTransform3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333, 2.03333, 2.96667, 3.96667, 4.96667, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.536348, -0.459646, 0.352353), Vector3(0.368245, -0.0582546, 0.629439), Vector3(0.51651, 0.626692, -0.0886225), Vector3(0.194586, 0.157451, -0.667029), Vector3(-0.808036, -0.647329, -0.633867), Vector3(-0.808036, 0.0450915, 0.369974), Vector3(-0.0372124, -0.222048, 0.7232)]
+}
+
+[sub_resource type="Animation" id="Animation_whkrg"]
+resource_name = "damage"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D/GolemLowPoly:material_override")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_tgt18"), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v45yc"]
+_data = {
+"RESET": SubResource("Animation_tvawd"),
+"damage": SubResource("Animation_whkrg"),
+"float": SubResource("Animation_beiug")
+}
 
 [node name="Enemy" type="CharacterBody3D" groups=["destructibles"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_uev7x")
 material = ExtResource("2_w3d51")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_nrvlj")
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_qhhr3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_qvr7h")
+shape = SubResource("SphereShape3D_yfpf0")
+
+[node name="GolemLowPoly" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0453544, -1.03888, -0.0244586)
+mesh = ExtResource("4_chios")
+skeleton = NodePath("../..")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../CollisionShape3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v45yc")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

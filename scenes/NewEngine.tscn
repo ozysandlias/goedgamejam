@@ -1,20 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dykfxuov41h2l"]
+[gd_scene load_steps=7 format=3 uid="uid://dykfxuov41h2l"]
 
 [ext_resource type="Script" path="res://scripts/new_track_follow.gd" id="1_5xrr5"]
 [ext_resource type="Script" path="res://scripts/train_controller.gd" id="1_nqyxy"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_aj2ux"]
+[ext_resource type="ArrayMesh" uid="uid://d4djpomlmxy4b" path="res://assets/meshes/Traindraft.obj" id="4_yo56n"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_waja0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kqquk"]
+size = Vector3(1, 1, 2.5)
 
 [node name="PathFollow3D" type="PathFollow3D"]
 script = ExtResource("1_5xrr5")
 
-[node name="Area3D" type="Area3D" parent="." groups=["cart_collider"]]
+[node name="Area3D" type="Area3D" parent="." groups=["cart_collider", "engine"]]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0)
+visible = false
 mesh = SubResource("BoxMesh_waja0")
 script = ExtResource("1_nqyxy")
 
@@ -30,5 +33,10 @@ script = ExtResource("3_aj2ux")
 target_position = Vector3(0, 0, -50)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.794199, 0.382738)
 shape = SubResource("BoxShape3D_kqquk")
+
+[node name="Traindraft" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(-0.14, 0, -1.22392e-08, 0, 0.14, 0, 1.22392e-08, 0, -0.14, 0.25, 0.158403, 0.887707)
+mesh = ExtResource("4_yo56n")
+skeleton = NodePath("../..")

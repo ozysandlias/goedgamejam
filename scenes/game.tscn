@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://nrt658sbimc7"]
+[gd_scene load_steps=13 format=3 uid="uid://nrt658sbimc7"]
 
 [ext_resource type="PackedScene" uid="uid://cdediqy0ln8b8" path="res://scenes/floor.tscn" id="1_78fd2"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_3ryep"]
 [ext_resource type="PackedScene" uid="uid://bnyr4syglcv4i" path="res://scenes/track.tscn" id="3_v7mqn"]
 [ext_resource type="PackedScene" uid="uid://chexarr2kj8p8" path="res://scenes/enemy.tscn" id="4_rmjx2"]
 [ext_resource type="PackedScene" uid="uid://b8kdcfw2mefk8" path="res://scenes/junction.tscn" id="6_rqqhb"]
+[ext_resource type="PackedScene" uid="uid://cqs3oneiylolk" path="res://scenes/bullet.tscn" id="7_jox7g"]
 [ext_resource type="PackedScene" uid="uid://dykfxuov41h2l" path="res://scenes/NewEngine.tscn" id="7_mqby7"]
 
 [sub_resource type="Curve3D" id="Curve3D_2agn1"]
@@ -36,6 +37,9 @@ tonemap_mode = 2
 [node name="Game" type="Node3D"]
 process_mode = 1
 
+[node name="EnemyTarget" type="Node3D" parent="."]
+transform = Transform3D(0.754087, -0.135344, 0.642674, 0.00010529, 0.978557, 0.205957, -0.656771, -0.155242, 0.737934, -2.49393, 3.07907, -1.10803)
+
 [node name="Map" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
@@ -50,10 +54,15 @@ transform = Transform3D(0.0712803, 0.150871, 0.985976, -0.316405, 0.940862, -0.1
 progress = 151.385
 
 [node name="Engine" parent="Loop0" instance=ExtResource("7_mqby7")]
-transform = Transform3D(0.754089, -0.135208, 0.642704, 0, 0.978579, 0.205868, -0.656772, -0.155243, 0.737936, -2.29234, 0.0763559, -1.07345)
+transform = Transform3D(0.754087, -0.135208, 0.642703, 0, 0.978576, 0.205867, -0.656771, -0.155242, 0.737934, -2.29234, 0.0763559, -1.07345)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Loop0/Engine"]
+remote_path = NodePath("../../../EnemyTarget")
+update_rotation = false
+update_scale = false
 
 [node name="Crossover0Two" type="PathFollow3D" parent="Loop0"]
-transform = Transform3D(0.00868188, -0.0131172, -0.99987, -0.445075, 0.895353, -0.0156106, 0.895446, 0.445156, 0.00193519, 20.6327, 8.8164, -28.2183)
+transform = Transform3D(0.00867972, -0.0131169, -0.99987, -0.445075, 0.895353, -0.0156094, 0.895446, 0.445156, 0.0019334, 20.6327, 8.81641, -28.2183)
 progress = 49.4877
 
 [node name="Junction0One" parent="." node_paths=PackedStringArray("cross_1", "cross_2") instance=ExtResource("6_rqqhb")]
@@ -67,7 +76,7 @@ top_level = true
 curve = SubResource("Curve3D_2agn1")
 
 [node name="Crossover1Zero" type="PathFollow3D" parent="Loop1"]
-transform = Transform3D(-0.0875667, 0.286297, 0.95413, -0.0425597, 0.955858, -0.290722, -0.995245, -0.0660653, -0.071517, 20.4799, 10.4725, -27.4363)
+transform = Transform3D(-0.0875666, 0.286297, 0.95413, -0.0425597, 0.955858, -0.290722, -0.995243, -0.0660653, -0.071517, 20.4799, 10.4725, -27.4363)
 progress = 138.841
 
 [node name="Junction0Two" parent="." node_paths=PackedStringArray("cross_1", "cross_2") instance=ExtResource("6_rqqhb")]
@@ -81,7 +90,7 @@ top_level = true
 curve = SubResource("Curve3D_lh58h")
 
 [node name="Crossover2Zero" type="PathFollow3D" parent="Loop2"]
-transform = Transform3D(-0.508115, -0.0587897, -0.859261, -0.116903, 0.993113, 0.00117911, 0.853304, 0.101049, -0.511501, -4.13663, -0.00396824, 2.12973)
+transform = Transform3D(-0.508117, -0.0587883, -0.85926, -0.1169, 0.993113, 0.00117911, 0.853304, 0.101046, -0.511502, -4.13663, -0.00396824, 2.12973)
 progress = 129.59
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -132,38 +141,34 @@ text = "Close
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2397, 1, 9.06016)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2397, 14.106, 9.06016)
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3919, 1, 7.46397)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3919, 13.0214, 2.43037)
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0215, 11.179, 17.4207)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0215, 15.0591, 17.4207)
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8317, 13.2545, -33.6757)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8317, 17.1346, -33.6757)
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6154, 20.4073, -48.8628)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6154, 24.2874, -48.8628)
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2139, 6.46719, -3.06943)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2139, 10.3473, -3.06943)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4906, 1, 5.67986)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4906, 12.3735, 5.67986)
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3275, 1, 12.4396)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3275, 12.2359, 12.4396)
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.58877, 1, 14.2495)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.58877, 10.6512, 14.2495)
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource("4_rmjx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.28514, 1, 6.15727)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.28514, 11.8844, 6.15727)
 
 [node name="Environment" type="Node" parent="."]
 
@@ -172,5 +177,7 @@ environment = SubResource("Environment_5ht53")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.26897, 0)
+
+[node name="Bullet" parent="." instance=ExtResource("7_jox7g")]
 
 [connection signal="pressed" from="UI/CenterContainer/Pause Menu/Close Buton" to="UI/CenterContainer/Pause Menu" method="_on_close_buton_pressed"]

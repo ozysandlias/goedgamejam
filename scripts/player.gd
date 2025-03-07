@@ -1,10 +1,11 @@
 extends Node3D
 
 # Sensitivity of the mouse movement
-var mouse_sensitivity: float = 0.1
+var mouse_sensitivity := 0.1
 # Rotation angles
-var yaw: float = 0.0
-var pitch: float = 0.0
+var yaw := 0.0
+var pitch := 0.0
+var atk := 1
 @onready var raycast: RayCast3D = $RayCast3D
 @onready var train_controller: MeshInstance3D = get_parent().get_node("MeshInstance3D")
 
@@ -21,7 +22,7 @@ func _input(event):
 		pitch -= event.relative.y * mouse_sensitivity
 		
 		# Clamp the pitch to prevent flipping
-		pitch = clamp(pitch, -89, 45)
+		pitch = clamp(pitch, -89, 89)
 		yaw = wrapf(yaw, 0, 360)
 
 		# Apply the rotation to the Node3D (the parent of the Camera3D)
@@ -41,9 +42,7 @@ func _input(event):
 		raycast.force_raycast_update()
 		if raycast.is_colliding():
 			var target = raycast.get_collider()
-			print(target)
 			if target.is_in_group("destructibles"):
-				#immediately delete enemy -- need to change to damage
-				target.damage()
+				target.hit(atk)
 			elif target.name == "Switch":
 				target.get_parent().swap()
