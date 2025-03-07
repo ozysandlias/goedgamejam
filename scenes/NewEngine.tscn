@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dykfxuov41h2l"]
+[gd_scene load_steps=9 format=3 uid="uid://dykfxuov41h2l"]
 
 [ext_resource type="Script" path="res://scripts/new_track_follow.gd" id="1_5xrr5"]
 [ext_resource type="Script" path="res://scripts/train_controller.gd" id="1_nqyxy"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_aj2ux"]
-[ext_resource type="ArrayMesh" uid="uid://d4djpomlmxy4b" path="res://assets/meshes/Traindraft.obj" id="4_yo56n"]
+[ext_resource type="PackedScene" uid="uid://cuw4h26s4venb" path="res://assets/meshes/newtrain.glb" id="4_kgub8"]
+[ext_resource type="PackedScene" uid="uid://dxu5q7hpq8itm" path="res://assets/meshes/mount.glb" id="5_pl1xj"]
+[ext_resource type="PackedScene" uid="uid://jwahdak4lwg2" path="res://assets/meshes/cannon.glb" id="6_rjs0i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_waja0"]
 
@@ -36,7 +38,11 @@ target_position = Vector3(0, 0, -50)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.794199, 0.382738)
 shape = SubResource("BoxShape3D_kqquk")
 
-[node name="Traindraft" type="MeshInstance3D" parent="Area3D"]
-transform = Transform3D(-0.14, 0, -1.22392e-08, 0, 0.14, 0, 1.22392e-08, 0, -0.14, 0.25, 0.158403, 0.887707)
-mesh = ExtResource("4_yo56n")
-skeleton = NodePath("../..")
+[node name="newtrain" parent="Area3D" instance=ExtResource("4_kgub8")]
+transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0.25, 0.149064, 0.806)
+
+[node name="mount" parent="Area3D" instance=ExtResource("5_pl1xj")]
+transform = Transform3D(0.15, 0, -1.77636e-15, 0, 0.15, 0, 1.77636e-15, 0, 0.15, 0.254186, 1.1631, -0.547324)
+
+[node name="cannon" parent="Area3D" instance=ExtResource("6_rjs0i")]
+transform = Transform3D(-0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0.218476, 1.21202, -0.681811)

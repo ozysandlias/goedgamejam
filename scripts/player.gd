@@ -8,6 +8,8 @@ var pitch := 0.0
 var atk := 1
 @onready var raycast: RayCast3D = $RayCast3D
 @onready var train_controller: MeshInstance3D = get_parent().get_node("MeshInstance3D")
+@onready var mount = get_parent().get_node("mount")
+@onready var cannon = get_parent().get_node("cannon")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,6 +30,8 @@ func _input(event):
 		# Apply the rotation to the Node3D (the parent of the Camera3D)
 		rotation_degrees.x = pitch
 		rotation_degrees.y = yaw
+		cannon.basis = Basis(-basis.x, basis.y, -basis.z) / 7
+		mount.rotation.y = rotation.y
 
 	#pause
 	if event is InputEventKey and Input.is_action_just_pressed("pause"):

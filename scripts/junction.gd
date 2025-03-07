@@ -19,6 +19,11 @@ func swap():
 func _on_area_entered(area:Area3D) -> void:
 	if area.is_in_group("cart_collider"):
 		var rail_guide = area.get_parent()
-		var selected_track = selected_cross.get_parent()
+		var selected_track = null
+		if selected_cross != null:
+			selected_track = selected_cross.get_parent()
+		if rail_guide != Globals.train_engine:
+			selected_track = rail_guide.follow_cart.current_track
+			selected_cross = rail_guide.follow_cart.current_cross
 		if rail_guide.current_track != selected_track:
 			rail_guide.switch_track(selected_track, selected_cross)

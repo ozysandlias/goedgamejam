@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://nrt658sbimc7"]
+[gd_scene load_steps=12 format=3 uid="uid://nrt658sbimc7"]
 
 [ext_resource type="PackedScene" uid="uid://cdediqy0ln8b8" path="res://scenes/floor.tscn" id="1_78fd2"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_3ryep"]
 [ext_resource type="PackedScene" uid="uid://bnyr4syglcv4i" path="res://scenes/track.tscn" id="3_v7mqn"]
 [ext_resource type="PackedScene" uid="uid://chexarr2kj8p8" path="res://scenes/enemy.tscn" id="4_rmjx2"]
 [ext_resource type="PackedScene" uid="uid://b8kdcfw2mefk8" path="res://scenes/junction.tscn" id="6_rqqhb"]
-[ext_resource type="PackedScene" uid="uid://cqs3oneiylolk" path="res://scenes/bullet.tscn" id="7_jox7g"]
 [ext_resource type="PackedScene" uid="uid://dykfxuov41h2l" path="res://scenes/NewEngine.tscn" id="7_mqby7"]
 
 [sub_resource type="Curve3D" id="Curve3D_2agn1"]
@@ -76,7 +75,7 @@ top_level = true
 curve = SubResource("Curve3D_2agn1")
 
 [node name="Crossover1Zero" type="PathFollow3D" parent="Loop1"]
-transform = Transform3D(-0.0875666, 0.286297, 0.95413, -0.0425597, 0.955858, -0.290722, -0.995243, -0.0660653, -0.071517, 20.4799, 10.4725, -27.4363)
+transform = Transform3D(-0.0875665, 0.286297, 0.95413, -0.0425596, 0.955858, -0.290722, -0.995242, -0.0660653, -0.071517, 20.4799, 10.4725, -27.4363)
 progress = 138.841
 
 [node name="Junction0Two" parent="." node_paths=PackedStringArray("cross_1", "cross_2") instance=ExtResource("6_rqqhb")]
@@ -112,7 +111,7 @@ size_flags_vertical = 3
 
 [node name="Crosshair" type="Label" parent="UI/CenterContainer"]
 layout_mode = 2
-text = "X"
+text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -177,7 +176,5 @@ environment = SubResource("Environment_5ht53")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.26897, 0)
-
-[node name="Bullet" parent="." instance=ExtResource("7_jox7g")]
 
 [connection signal="pressed" from="UI/CenterContainer/Pause Menu/Close Buton" to="UI/CenterContainer/Pause Menu" method="_on_close_buton_pressed"]
