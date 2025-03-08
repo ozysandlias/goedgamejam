@@ -7,10 +7,13 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_4jjyy"]
 size = Vector3(5, 5, 5)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_taln7"]
+[sub_resource type="BoxMesh" id="BoxMesh_vtxcj"]
 material = ExtResource("2_obk4s")
+size = Vector3(5, 3, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6fk4x"]
+radius = 1.5
+height = 3.22
 
 [node name="Junction" type="Area3D"]
 script = ExtResource("1_0v3ek")
@@ -21,10 +24,11 @@ texture_2 = ExtResource("3_wn7i6")
 shape = SubResource("BoxShape3D_4jjyy")
 
 [node name="Switch" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92701, 1.76811, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Switch"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.04563, 0)
-mesh = SubResource("CapsuleMesh_taln7")
+mesh = SubResource("BoxMesh_vtxcj")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Switch"]
