@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bf8ci7a8vxxql"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_uev7x"]
+[ext_resource type="Script" uid="uid://beifl3ynyr6ds" path="res://scripts/enemy.gd" id="1_uev7x"]
 [ext_resource type="Material" uid="uid://ce1anqmcyltpx" path="res://assets/Materials/red_grid.tres" id="2_w3d51"]
-[ext_resource type="Material" path="res://assets/Materials/red.tres" id="3_tgt18"]
+[ext_resource type="Material" uid="uid://t6qde7qy4adh" path="res://assets/Materials/red.tres" id="3_tgt18"]
 [ext_resource type="ArrayMesh" uid="uid://bt8yufkdan2r4" path="res://assets/meshes/GolemLowPoly.obj" id="4_chios"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qhhr3"]
@@ -61,9 +61,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v45yc"]
 _data = {
-"RESET": SubResource("Animation_tvawd"),
-"damage": SubResource("Animation_whkrg"),
-"float": SubResource("Animation_beiug")
+&"RESET": SubResource("Animation_tvawd"),
+&"damage": SubResource("Animation_whkrg"),
+&"float": SubResource("Animation_beiug")
 }
 
 [node name="Enemy" type="CharacterBody3D" groups=["destructibles"]]
@@ -88,7 +88,7 @@ remote_path = NodePath("../CollisionShape3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_v45yc")
+&"": SubResource("AnimationLibrary_v45yc")
 }
 
 [node name="Timer" type="Timer" parent="."]
