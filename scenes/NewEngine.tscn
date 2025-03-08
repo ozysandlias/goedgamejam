@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_aj2ux"]
 [ext_resource type="PackedScene" uid="uid://cuw4h26s4venb" path="res://assets/meshes/newtrain.glb" id="4_kgub8"]
 [ext_resource type="PackedScene" uid="uid://dxu5q7hpq8itm" path="res://assets/meshes/mount.glb" id="5_pl1xj"]
-[ext_resource type="PackedScene" uid="uid://jwahdak4lwg2" path="res://assets/meshes/cannon.glb" id="6_rjs0i"]
+[ext_resource type="PackedScene" uid="uid://dlk2nau1di2m0" path="res://assets/meshes/cannon.tscn" id="6_tdy53"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_waja0"]
 
@@ -44,5 +44,5 @@ transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.1
 [node name="mount" parent="Area3D" instance=ExtResource("5_pl1xj")]
 transform = Transform3D(0.15, 0, -1.77636e-15, 0, 0.15, 0, 1.77636e-15, 0, 0.15, 0.254186, 1.1631, -0.547324)
 
-[node name="cannon" parent="Area3D" instance=ExtResource("6_rjs0i")]
-transform = Transform3D(-0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0.218476, 1.21202, -0.681811)
+[node name="cannon" parent="Area3D" instance=ExtResource("6_tdy53")]
+transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0.244829, 1.341, -0.552)

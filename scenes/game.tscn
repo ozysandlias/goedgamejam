@@ -49,7 +49,7 @@ transform = Transform3D(1, -0.000139626, 0, 0.000139626, 1, 0, 0, 0, 1, -0.20157
 top_level = true
 
 [node name="Crossover0One" type="PathFollow3D" parent="Loop0"]
-transform = Transform3D(0.0712803, 0.150871, 0.985976, -0.316405, 0.940862, -0.121093, -0.945941, -0.303337, 0.114801, 21.2396, 8.13191, 6.08578)
+transform = Transform3D(0.0712804, 0.150871, 0.985976, -0.316405, 0.940862, -0.121093, -0.945941, -0.303337, 0.114801, 21.2396, 8.13191, 6.08578)
 progress = 151.385
 
 [node name="Engine" parent="Loop0" instance=ExtResource("7_mqby7")]
@@ -75,7 +75,7 @@ top_level = true
 curve = SubResource("Curve3D_2agn1")
 
 [node name="Crossover1Zero" type="PathFollow3D" parent="Loop1"]
-transform = Transform3D(-0.0875665, 0.286297, 0.95413, -0.0425596, 0.955858, -0.290722, -0.995242, -0.0660653, -0.071517, 20.4799, 10.4725, -27.4363)
+transform = Transform3D(-0.0875664, 0.286297, 0.95413, -0.0425596, 0.955858, -0.290722, -0.995242, -0.0660653, -0.071517, 20.4799, 10.4725, -27.4363)
 progress = 138.841
 
 [node name="Junction0Two" parent="." node_paths=PackedStringArray("cross_1", "cross_2") instance=ExtResource("6_rqqhb")]
@@ -89,7 +89,7 @@ top_level = true
 curve = SubResource("Curve3D_lh58h")
 
 [node name="Crossover2Zero" type="PathFollow3D" parent="Loop2"]
-transform = Transform3D(-0.508117, -0.0587883, -0.85926, -0.1169, 0.993113, 0.00117911, 0.853304, 0.101046, -0.511502, -4.13663, -0.00396824, 2.12973)
+transform = Transform3D(-0.508117, -0.0587884, -0.85926, -0.1169, 0.993113, 0.00117911, 0.853304, 0.101046, -0.511502, -4.13663, -0.00396824, 2.12973)
 progress = 129.59
 
 [node name="UI" type="CanvasLayer" parent="."]
