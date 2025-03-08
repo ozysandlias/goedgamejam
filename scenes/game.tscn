@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bnyr4syglcv4i" path="res://scenes/track.tscn" id="3_v7mqn"]
 [ext_resource type="Texture2D" uid="uid://cr72kjil43vgj" path="res://assets/textures/rock030_nrm_rgh.png" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://b8kdcfw2mefk8" path="res://scenes/junction.tscn" id="7_gee14"]
-[ext_resource type="PackedScene" uid="uid://dykfxuov41h2l" path="res://scenes/NewEngine.tscn" id="7_mqby7"]
-[ext_resource type="PackedScene" uid="uid://chexarr2kj8p8" path="res://scenes/enemy.tscn" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://b7rtkxgy8nleb" path="res://scenes/NewEngine.tscn" id="7_mqby7"]
+[ext_resource type="PackedScene" uid="uid://bf8ci7a8vxxql" path="res://scenes/enemy.tscn" id="9_0tnpc"]
 
 [sub_resource type="Gradient" id="Gradient_kvpfn"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -131,11 +131,11 @@ top_level = true
 curve = SubResource("Curve3D_u5sy4")
 
 [node name="Crossover0One" type="PathFollow3D" parent="Loop0"]
-transform = Transform3D(-0.16143, 0.0179699, -0.986718, -0.0112041, 0.999734, 0.02004, 0.986818, 0.0142904, -0.161186, 0.262102, -5.49751, -33.1471)
+transform = Transform3D(-0.161427, 0.0179698, -0.986718, -0.0112043, 0.999734, 0.0200399, 0.986818, 0.0142905, -0.161183, 0.262056, -5.4975, -33.1471)
 progress = 91.715
 
 [node name="Engine" parent="Loop0" instance=ExtResource("7_mqby7")]
-transform = Transform3D(0.623319, 0.0701425, 0.778778, 7.4504e-09, 0.995917, -0.0897032, -0.781936, 0.055914, 0.620802, -0.53074, -5.93108, 25.8265)
+transform = Transform3D(0.62332, 0.0701424, 0.778778, 0, 0.995917, -0.0897031, -0.781936, 0.055914, 0.620802, -0.53074, -5.93108, 25.8265)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Loop0/Engine"]
 remote_path = NodePath("../../../EnemyTarget")
@@ -152,7 +152,7 @@ cross_1 = NodePath("../../Loop0/Crossover0One")
 cross_2 = NodePath("../Crossover1Zero")
 
 [node name="Crossover1Zero" type="PathFollow3D" parent="Loop1"]
-transform = Transform3D(-0.127753, -0.00377988, -0.991798, -0.00126098, 0.999992, -0.00364868, 0.991805, 0.000784512, -0.127756, -41.066, -42.8666, 139.474)
+transform = Transform3D(-0.127752, -0.00378003, -0.991798, -0.00126098, 0.999992, -0.00364883, 0.991805, 0.000784495, -0.127756, -41.066, -42.8666, 139.474)
 progress = 1.68421
 
 [node name="UI" type="CanvasLayer" parent="."]
