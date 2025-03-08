@@ -8,8 +8,10 @@ const SPEED = 6.0
 const JUMP_VELOCITY = 4.5
 var target: Area3D = null
 var chase := false
-var maxhp := 4
-var hp := maxhp
+var worth: float = 5
+
+var health_script = preload("res://scripts/health.gd")
+var Health = health_script.new()
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var guide: Node3D = get_parent().get_parent().find_child("EnemyTarget")
@@ -33,14 +35,14 @@ func _physics_process(delta: float) -> void:
 		velocity = global_position.direction_to(target.global_position)*SPEED
 		move_and_slide()
 
-
-
 func hit(damage):
-	hp -= damage
 	animation.play("damage")
-	if hp <=0:
-		queue_free()
+	Health.damage(damage)
 
+	if Health.current_health <= 0:
+		Globals.currency += worth
+		print(Globals.currency)
+		self.queue_free()
 
 func _on_area_3d_area_entered(area:Area3D) -> void:
 	if area.is_in_group("engine"):
@@ -50,7 +52,6 @@ func _on_area_3d_area_entered(area:Area3D) -> void:
 		look_at(target.global_position)
 		aggro_box.queue_free()
 		timer.start()
-
 
 func _on_timer_timeout() -> void:
 	if get_parent() == guide:

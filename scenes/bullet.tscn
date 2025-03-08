@@ -1,16 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqs3oneiylolk"]
+[gd_scene load_steps=5 format=3 uid="uid://cqs3oneiylolk"]
 
-[ext_resource type="Script" uid="uid://b0ob6333tdk1t" path="res://scenes/bullet.gd" id="1_43tov"]
+[ext_resource type="Script" path="res://scenes/bullet.gd" id="1_43tov"]
+[ext_resource type="Script" path="res://scripts/bullet_damage.gd" id="2_yxjev"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_32df5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4w8yk"]
 
-[node name="Bullet" type="StaticBody3D"]
+[node name="RigidBody3D" type="RigidBody3D" groups=["EnemyBullet"]]
+gravity_scale = 0.0
+freeze = true
 script = ExtResource("1_43tov")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_32df5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_4w8yk")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("2_yxjev")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_4w8yk")
