@@ -50,3 +50,5 @@ func _input(event):
 				target.hit(atk)
 			elif target.name == "Switch":
 				target.get_parent().swap()
+			elif target.is_in_group("EnemyBullet"):
+				target.queue_free()

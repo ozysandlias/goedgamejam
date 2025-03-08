@@ -1,5 +1,9 @@
 extends Node
 
+# Player Stats
+var player_health: float = 100
+var currency: float = 0
+
 # Preloading cart prefab for later instantiations
 # TODO: preload all types of carts
 var new_cart = preload("res://scenes/Cart.tscn")
