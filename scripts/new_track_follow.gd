@@ -25,19 +25,19 @@ func _physics_process(delta):
 
 # Switches the cart/area to a new track
 func switch_track(new_track, new_cross):
+	if new_track != null and new_cross != null:
+		current_track = new_track
+		current_cross = new_cross	
+		#save the carts position and set it top level so it doesn't snap
+		var cart_pos = area.global_transform
 
-	current_track = new_track
-	current_cross = new_cross	
-	#save the carts position and set it top level so it doesn't snap
-	var cart_pos = area.global_transform
+		
+		#Remove from old track and place under new track
+		get_parent().remove_child(self)
+		area.top_level = true
+		current_track.add_child(self)
+		area.global_transform = cart_pos
 
-	
-	#Remove from old track and place under new track
-	get_parent().remove_child(self)
-	area.top_level = true
-	current_track.add_child(self)
-	area.global_transform = cart_pos
-
-	#Loop track until new on specified
-	progress_ratio = new_cross.progress_ratio
-	loop = true
+		#Loop track until new on specified
+		progress_ratio = new_cross.progress_ratio
+		loop = true

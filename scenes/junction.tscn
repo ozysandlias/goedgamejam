@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b8kdcfw2mefk8"]
 
-[ext_resource type="Script" path="res://scripts/junction.gd" id="1_0v3ek"]
+[ext_resource type="Script" uid="uid://d25menxmqswdm" path="res://scripts/junction.gd" id="1_0v3ek"]
 [ext_resource type="Material" uid="uid://ce1anqmcyltpx" path="res://assets/Materials/red_grid.tres" id="2_obk4s"]
 [ext_resource type="Material" uid="uid://c3ojtbt72c8px" path="res://assets/Materials/green_grid.tres" id="3_wn7i6"]
 

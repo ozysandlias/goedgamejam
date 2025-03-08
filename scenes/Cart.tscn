@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1cnjjl6nppg7"]
 
-[ext_resource type="Script" path="res://scripts/new_track_follow.gd" id="1_2reo8"]
+[ext_resource type="Script" uid="uid://cctbhaeq868xr" path="res://scripts/new_track_follow.gd" id="1_2reo8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k5eol"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_waja0"]
+size = Vector3(1, 1, 2)
 
 [node name="PathFollow3D" type="PathFollow3D"]
 script = ExtResource("1_2reo8")
@@ -16,6 +17,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0)
 shape = SubResource("BoxShape3D_k5eol")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.5, 0.938265)
 mesh = SubResource("BoxMesh_waja0")
 skeleton = NodePath("../..")

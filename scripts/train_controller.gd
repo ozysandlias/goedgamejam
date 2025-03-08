@@ -18,8 +18,7 @@ func spawn_cart():
 	last_cart.get_parent().add_child(cart_instance)
 
 	# Space new cart out from the last cart
-	cart_instance.progress = last_cart.progress - 2
-	#cart_instance.progress_ratio = last_cart.progress_ratio - 0.05 if last_cart.progress_ratio - 0.05 >= 0 else 1 + (last_cart.progress_ratio - 0.05)
+	cart_instance.progress = last_cart.progress - 2.5
 	cart_instance.follow_cart = last_cart
 
 	# New cart is now the end of the train
