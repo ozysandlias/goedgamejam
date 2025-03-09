@@ -3,20 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddprscrpsofah"
-path="res://.godot/imported/ground037_alb_ht.png-587e922b9c8fcab3f2d4050ac005b844.ctex"
+path.s3tc="res://.godot/imported/ground037_alb_ht.png-587e922b9c8fcab3f2d4050ac005b844.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/ground037_alb_ht.png"
-dest_files=["res://.godot/imported/ground037_alb_ht.png-587e922b9c8fcab3f2d4050ac005b844.ctex"]
+dest_files=["res://.godot/imported/ground037_alb_ht.png-587e922b9c8fcab3f2d4050ac005b844.s3tc.ctex"]
 
 [params]
 
-compress/mode=3
-compress/high_quality=true
+compress/mode=2
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=2
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

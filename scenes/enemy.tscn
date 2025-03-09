@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bf8ci7a8vxxql"]
 
-[ext_resource type="Script" path="res://scripts/golem_enemy.gd" id="1_52xqp"]
+[ext_resource type="Script" uid="uid://cocx5q4m6roj8" path="res://scripts/golem_enemy.gd" id="1_52xqp"]
 [ext_resource type="Material" uid="uid://t6qde7qy4adh" path="res://assets/Materials/red.tres" id="3_tgt18"]
 [ext_resource type="ArrayMesh" uid="uid://bt8yufkdan2r4" path="res://assets/meshes/GolemLowPoly.obj" id="4_chios"]
 
@@ -9,6 +9,21 @@ radius = 15.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yfpf0"]
 radius = 1.49602
+
+[sub_resource type="Animation" id="Animation_tvawd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RemoteTransform3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_whkrg"]
 resource_name = "damage"
@@ -43,26 +58,11 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(-0.536348, -0.459646, 0.352353), Vector3(0.368245, -0.0582546, 0.629439), Vector3(0.51651, 0.626692, -0.0886225), Vector3(0.194586, 0.157451, -0.667029), Vector3(-0.808036, -0.647329, -0.633867), Vector3(-0.808036, 0.0450915, 0.369974), Vector3(-0.0372124, -0.222048, 0.7232)]
 }
 
-[sub_resource type="Animation" id="Animation_tvawd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RemoteTransform3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v45yc"]
 _data = {
+&"RESET": SubResource("Animation_tvawd"),
 &"damage": SubResource("Animation_whkrg"),
-&"idle": SubResource("Animation_beiug"),
-&"RESET": SubResource("Animation_tvawd")
+&"idle": SubResource("Animation_beiug")
 }
 
 [node name="Enemy" type="CharacterBody3D" groups=["destructibles"]]
