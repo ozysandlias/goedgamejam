@@ -1,54 +1,35 @@
-extends Node3D
+extends Area3D
 
-# Sensitivity of the mouse movement
-var mouse_sensitivity := 0.1
-# Rotation angles
-var yaw := 0.0
-var pitch := 0.0
-var atk := 1
-@onready var raycast: RayCast3D = $RayCast3D
-@onready var train_controller: MeshInstance3D = get_parent().get_node("MeshInstance3D")
-@onready var mount = get_parent().get_node("mount")
-@onready var cannon = get_parent().get_node("cannon")
+@onready var train_controller: MeshInstance3D = $MeshInstance3D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	# Hide the mouse cursor and capture it
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+var MAX_HEALTH = 20
+var ATTACK_DAMAGE = 1
+var MOVE_SPEED = 10
 
-# This function is called when a mouse motion event occurs
-func _input(event):
-	if event is InputEventMouseMotion:
-		# Update yaw and pitch based on mouse movement
-		yaw -= event.relative.x * mouse_sensitivity
-		pitch -= event.relative.y * mouse_sensitivity
-		
-		# Clamp the pitch to prevent flipping
-		pitch = clamp(pitch, -89, 89)
-		yaw = wrapf(yaw, 0, 360)
+var cart_cost: int = 20
 
-		# Apply the rotation to the Node3D (the parent of the Camera3D)
-		rotation_degrees.x = pitch
-		rotation_degrees.y = yaw
-		cannon.basis = Basis(-basis.x, basis.y, -basis.z) / 7
-		mount.rotation.y = rotation.y
+var current_health: float
 
-	#pause
-	if event is InputEventKey and Input.is_action_just_pressed("pause"):
-		get_tree().paused = true
+func _init():
+	current_health = MAX_HEALTH
 
-	#spawn cart with jump -- need to change based on leveling system
-	if event is InputEventKey and Input.is_action_just_pressed("jump"):
+func _process(delta):
+	if Globals.currency != 0 and Globals.currency % 20 == 0:
+		Globals.currency -= cart_cost
 		train_controller.spawn_cart()
 
-	#fire the main cannon
-	if event is InputEventMouseButton and Input.is_action_just_pressed("shoot"):
-		raycast.force_raycast_update()
-		if raycast.is_colliding():
-			var target = raycast.get_collider()
-			if target.is_in_group("destructibles"):
-				target.hit(atk)
-			elif target.name == "Switch":
-				target.get_parent().swap()
-			elif target.is_in_group("EnemyBullet"):
-				target.queue_free()
+func hit(hit_damage):
+	var alive = damage(hit_damage)
+	
+	if !alive:
+		get_tree().change_scene_to_file.call_deferred("res://scenes/game.tscn")
+
+func damage(amount):
+	current_health -= amount
+
+	if current_health <= 0:
+		return false
+	return true
+
+func heal(amount):
+	current_health += amount

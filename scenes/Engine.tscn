@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/track_follow.gd" id="1_myxm5"]
 [ext_resource type="Script" path="res://scripts/train_controller.gd" id="2_k27o4"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="3_4bq6y"]
+[ext_resource type="Script" path="res://scripts/controls.gd" id="3_4bq6y"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_waja0"]
 

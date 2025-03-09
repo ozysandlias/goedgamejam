@@ -2,7 +2,7 @@ extends Node
 
 # Player Stats
 var player_health: float = 100
-var currency: float = 0
+var currency: int = 0
 
 # Preloading cart prefab for later instantiations
 # TODO: preload all types of carts
