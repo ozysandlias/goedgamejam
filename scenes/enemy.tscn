@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bf8ci7a8vxxql"]
 
-[ext_resource type="Script" uid="uid://cocx5q4m6roj8" path="res://scripts/golem_enemy.gd" id="1_52xqp"]
-[ext_resource type="Material" uid="uid://t6qde7qy4adh" path="res://assets/Materials/red.tres" id="3_tgt18"]
+[ext_resource type="Script" path="res://scripts/golem_enemy.gd" id="1_52xqp"]
+[ext_resource type="Material" path="res://assets/Materials/red.tres" id="3_tgt18"]
 [ext_resource type="ArrayMesh" uid="uid://bt8yufkdan2r4" path="res://assets/meshes/GolemLowPoly.obj" id="4_chios"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qhhr3"]
@@ -61,8 +61,8 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v45yc"]
 _data = {
 &"RESET": SubResource("Animation_tvawd"),
-&"damage": SubResource("Animation_whkrg"),
-&"idle": SubResource("Animation_beiug")
+&"idle": SubResource("Animation_beiug"),
+&"damage": SubResource("Animation_whkrg")
 }
 
 [node name="Enemy" type="CharacterBody3D" groups=["destructibles"]]
