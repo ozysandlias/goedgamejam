@@ -24,6 +24,8 @@ func hit(hit_damage):
 	if !alive:
 		get_tree().change_scene_to_file.call_deferred("res://scenes/game.tscn")
 
+	Globals.player_health = current_health
+
 func damage(amount):
 	current_health -= amount
 
