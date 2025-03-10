@@ -30,7 +30,7 @@ tonemap_mode = 2
 process_mode = 1
 
 [node name="EnemyTarget" type="Node3D" parent="."]
-transform = Transform3D(0.754087, -0.135344, 0.642674, 0.00010529, 0.978557, 0.205957, -0.656771, -0.155242, 0.737934, -54.8181, 139.519, -66.813)
+transform = Transform3D(0.754087, -0.135344, 0.642674, 0.00010529, 0.978557, 0.205957, -0.656771, -0.155242, 0.737934, -53.6234, 139.44, -71.3077)
 
 [node name="Map" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -46,11 +46,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.936, 139.44, -87.4479)
 top_level = true
 
 [node name="Crossover0One" type="PathFollow3D" parent="Loop0"]
-transform = Transform3D(0.235026, 0.123492, -0.964098, -0.181725, 0.979971, 0.081226, 0.954836, 0.156112, 0.252765, -75.1398, -6.0358, 335.9)
+transform = Transform3D(0.933984, 0.00342096, -0.35726, -0.00561048, 0.999953, -0.00509229, 0.357232, 0.00676058, 0.933976, 23.4569, -0.00428902, 22.5843)
 progress = 225.053
 
 [node name="Engine" parent="Loop0" instance=ExtResource("7_mqby7")]
-transform = Transform3D(0.939634, 0.0196937, -0.341523, 1.86259e-09, 0.998277, 0.0575674, 0.342095, -0.0540927, 0.938064, 24.1179, 0.0788879, 20.6349)
+transform = Transform3D(0.992404, 0.00444228, -0.122702, -6.98471e-10, 0.999281, 0.0361795, 0.122784, -0.0359049, 0.991742, 25.3126, -3.05176e-05, 16.1402)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Loop0/Engine"]
 remote_path = NodePath("../../../EnemyTarget")
