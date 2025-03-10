@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://by1nfef7xkpso"]
+[gd_scene load_steps=4 format=3 uid="uid://by1nfef7xkpso"]
 
-[ext_resource type="Script" uid="uid://bnrmhc3i210ab" path="res://scripts/junction_controller.gd" id="1_7yf4a"]
-[ext_resource type="Material" uid="uid://ce1anqmcyltpx" path="res://assets/Materials/red_grid.tres" id="2_p4mi6"]
+[ext_resource type="Script" uid="uid://l1foieupvyvv" path="res://scripts/junction_controller.gd" id="1_7yf4a"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_o46pl"]
 
@@ -10,8 +9,7 @@
 [node name="Switch" type="StaticBody3D" node_paths=PackedStringArray("tracks") groups=["switch"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4297, 0, 9.00501)
 script = ExtResource("1_7yf4a")
-tracks = [NodePath("")]
-material = ExtResource("2_p4mi6")
+tracks = [null]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22923, 0)
