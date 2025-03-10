@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://b7rtkxgy8nleb"]
 
-[ext_resource type="Script" path="res://scripts/new_track_follow.gd" id="1_5xrr5"]
-[ext_resource type="Script" path="res://scripts/train_controller.gd" id="1_nqyxy"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="3_aj2ux"]
-[ext_resource type="Script" path="res://scripts/controls.gd" id="4_4rr36"]
+[ext_resource type="Script" uid="uid://cctbhaeq868xr" path="res://scripts/new_track_follow.gd" id="1_5xrr5"]
+[ext_resource type="Script" uid="uid://dx5yaexi080f8" path="res://scripts/train_controller.gd" id="1_nqyxy"]
+[ext_resource type="Script" uid="uid://dm2rmywf6vm53" path="res://scripts/player.gd" id="3_aj2ux"]
+[ext_resource type="Script" uid="uid://b53b0ii52vcjr" path="res://scripts/controls.gd" id="4_4rr36"]
 [ext_resource type="PackedScene" uid="uid://cuw4h26s4venb" path="res://assets/meshes/newtrain.glb" id="4_kgub8"]
 [ext_resource type="PackedScene" uid="uid://dxu5q7hpq8itm" path="res://assets/meshes/mount.glb" id="5_pl1xj"]
 [ext_resource type="PackedScene" uid="uid://dlk2nau1di2m0" path="res://assets/meshes/cannon.tscn" id="6_tdy53"]
