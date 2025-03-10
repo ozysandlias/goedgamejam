@@ -1,16 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://nrt658sbimc7"]
+[gd_scene load_steps=12 format=3 uid="uid://nrt658sbimc7"]
 
 [ext_resource type="ArrayMesh" uid="uid://cbq4bgjmtcnjr" path="res://assets/meshes/MountainDraft1(2).obj" id="1_u5sy4"]
-[ext_resource type="Texture2D" uid="uid://b6bilj0ykgrrq" path="res://assets/textures/mountainTextureMountain7.webp" id="2_gee14"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_3ryep"]
 [ext_resource type="PackedScene" uid="uid://bnyr4syglcv4i" path="res://scenes/track.tscn" id="3_v7mqn"]
 [ext_resource type="PackedScene" uid="uid://b8kdcfw2mefk8" path="res://scenes/junction.tscn" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://b7rtkxgy8nleb" path="res://scenes/NewEngine.tscn" id="7_mqby7"]
 [ext_resource type="PackedScene" uid="uid://bf8ci7a8vxxql" path="res://scenes/enemy.tscn" id="9_0tnpc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tnpc"]
-albedo_color = Color(0.707967, 0.707967, 0.707966, 1)
-albedo_texture = ExtResource("2_gee14")
 
 [sub_resource type="Curve3D" id="Curve3D_p57ef"]
 _data = {
@@ -51,7 +46,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = ExtResource("1_u5sy4")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_0tnpc")
 
 [node name="Loop0" parent="." instance=ExtResource("3_v7mqn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.936, 139.44, -87.4479)
@@ -76,7 +70,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8933, 144.729, -172.207)
 curve = SubResource("Curve3D_u5sy4")
 
 [node name="Crossover1Zero" type="PathFollow3D" parent="Loop1"]
-transform = Transform3D(0.941598, -0.0374602, -0.334594, 0.0008847, 0.994013, -0.108804, 0.336684, 0.102152, 0.936039, -96.6788, -5.2531, 108.075)
+transform = Transform3D(0.879392, -0.329596, -0.343501, 0.375559, 0.923702, 0.0750956, 0.292556, -0.195041, 0.936124, -97.7932, -5.28873, 111.146)
 progress = 1416.18
 
 [node name="Junction" parent="." node_paths=PackedStringArray("cross_1", "cross_2") instance=ExtResource("7_gee14")]

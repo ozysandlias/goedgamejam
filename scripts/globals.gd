@@ -1,5 +1,8 @@
 extends Node
 
+# Game States
+var enemy_spawn_speed: float = 1
+
 # Player Stats
 var player_health: float = 100
 var currency: int = 0
@@ -7,6 +10,8 @@ var currency: int = 0
 # Preloading cart prefab for later instantiations
 # TODO: preload all types of carts
 var new_cart = preload("res://scenes/Cart.tscn")
+
+var golem_enemy = preload("res://scenes/enemy.tscn")
 
 # train_engine is the beginning of the train, this should not change during the game except for the startup
 var train_engine: PathFollow3D = null

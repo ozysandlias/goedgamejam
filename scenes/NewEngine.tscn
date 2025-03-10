@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7rtkxgy8nleb"]
+[gd_scene load_steps=11 format=3 uid="uid://b7rtkxgy8nleb"]
 
 [ext_resource type="Script" path="res://scripts/new_track_follow.gd" id="1_5xrr5"]
 [ext_resource type="Script" path="res://scripts/train_controller.gd" id="1_nqyxy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cuw4h26s4venb" path="res://assets/meshes/newtrain.glb" id="4_kgub8"]
 [ext_resource type="PackedScene" uid="uid://dxu5q7hpq8itm" path="res://assets/meshes/mount.glb" id="5_pl1xj"]
 [ext_resource type="PackedScene" uid="uid://dlk2nau1di2m0" path="res://assets/meshes/cannon.tscn" id="6_tdy53"]
+[ext_resource type="Script" path="res://scripts/spawn_enemy.gd" id="8_2aka5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_waja0"]
 
@@ -48,3 +49,6 @@ transform = Transform3D(0.15, 0, -1.77636e-15, 0, 0.15, 0, 1.77636e-15, 0, 0.15,
 
 [node name="cannon" parent="Area3D" instance=ExtResource("6_tdy53")]
 transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0.244829, 1.341, -0.552)
+
+[node name="EnemySpawner" type="Node3D" parent="."]
+script = ExtResource("8_2aka5")
