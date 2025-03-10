@@ -10,6 +10,7 @@ var atk := 1
 @onready var train_controller: MeshInstance3D = get_parent().get_node("MeshInstance3D")
 @onready var mount = get_parent().get_node("mount")
 @onready var cannon = get_parent().get_node("cannon")
+@onready var engine = get_parent().get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,12 +35,19 @@ func _input(event):
 		mount.rotation.y = rotation.y
 
 	#pause
-	if event is InputEventKey and Input.is_action_just_pressed("pause"):
-		get_tree().paused = true
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("pause"):
+			get_tree().paused = true
 
-	#spawn cart with jump -- need to change based on leveling system
-	if event is InputEventKey and Input.is_action_just_pressed("jump"):
-		train_controller.spawn_cart()
+		#spawn cart with jump -- need to change based on leveling system
+		if Input.is_action_just_pressed("jump"):
+			train_controller.spawn_cart()
+
+		#speed boost
+		if Input.is_action_just_pressed("sprint"):
+			engine.speed = engine.sprint_speed
+		if Input.is_action_just_released("sprint"):
+			engine.speed = engine.base_speed
 
 	#fire the main cannon
 	if event is InputEventMouseButton and Input.is_action_just_pressed("shoot"):

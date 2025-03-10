@@ -1,6 +1,8 @@
 extends PathFollow3D
 
-var speed := 5
+var speed
+var base_speed := 7
+var sprint_speed := 15
 
 var current_track: Path3D = null
 var current_cross: PathFollow3D = null
@@ -10,9 +12,12 @@ var follow_cart: PathFollow3D = null
 func _ready():
 	# Gets starting track when game starts
 	current_track = get_parent()
+	speed = base_speed
 
 func _physics_process(delta):
 	if area.top_level == false:
+		if follow_cart != null:
+			speed = follow_cart.speed
 		progress += speed * delta
 	elif area.global_position.distance_to(global_position) == 0: 
 		area.top_level = false
